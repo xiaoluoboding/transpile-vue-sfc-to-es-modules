@@ -25,29 +25,44 @@ info: |
   <carbon-logo-github />
 </a>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+---
+layout: image-right
+image: images/sfc.png
+---
+# 什么是 Vue SFC?
+
+### Vue 生态里 [SFC](https://v3.vuejs.org/guide/single-file-component.html#introduction) 是 single-file components (单文件组件) 的缩写
+
+通过扩展名 `.vue` 来描述了一个 Vue 组件
+
+**功能特性：**
+  
+- 📝 [完整语法高亮](https://github.com/vuejs/awesome-vue#source-code-editing)
+- 📦 [CommonJS 模块](https://webpack.js.org/concepts/modules/#what-is-a-webpack-module)
+- 🎨 [组件作用域的 CSS](https://vue-loader.vuejs.org/en/features/scoped-css.html)
+
+<style>
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+</style>
 
 ---
 
-# What is SFC?
+# Vue SFC 的编译
 
-[SFC](https://v3.vuejs.org/guide/single-file-component.html#introduction) is Single-File Component in Vue Project, It describe a Vue component.
-  
-- 📝 **template** - focus on the content with Markdown, and then style them later
-- 🎨 **script** - theme can be shared and used with npm packages
-- 🎨 **style** - code highlighting, live coding with autocompletion
+### Vue 工程需要借助 `vue-loader` 或者 `rollup-plugin-vue` 来将 SFC 文件编译转化为可执行的 JS
 
-<br>
-<br>
+值得注意的是：
 
-Read more about
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+* vue 2 工程依赖的是 `@vue/component-compiler-utils`、`vue-style-loader`
+* vue@next / vite 工程依赖的则是 `@vue/compiler-sfc`
 
 <style>
 h1 {
@@ -138,6 +153,16 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 
 ---
 
+# 相似工程
+
+类似 `codepen`，基于 `Vue` 技术栈可以在线提供编辑器 + 演示的工具
+
+* [vuep](https://github.com/QingWei-Li/vuep) - 🎡 A component for rendering Vue components with live editor and preview.
+* [demosify](https://github.com/demosify/demosify) - Create a playground to show the demos of your projects.
+* [codepan](https://github.com/egoist/codepan) - Like codepen and jsbin but works offline (*Archived*).
+
+---
+
 # Components
 
 <div grid="~ cols-2 gap-4">
@@ -157,44 +182,7 @@ We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that
 Check out [the guides](https://sli.dev/custom/#components) for more.
 
 </div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
 </div>
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
 
 ---
 class: px-20

@@ -157,7 +157,7 @@
     "@slidev/types" "0.10.2"
     js-yaml "^4.1.0"
 
-"@slidev/theme-default@^0.7.3":
+"@slidev/theme-default@*":
   version "0.7.3"
   resolved "https://registry.yarnpkg.com/@slidev/theme-default/-/theme-default-0.7.3.tgz#b20d32e1b29c82fbf332f5feb0a3e9e646d37aa0"
   integrity sha512-7BEHlrbz/VJgteUrReMpIjV/Jlrxt/JpEosMQO/4y94cukn8MnbW1KKW8yQYz7GHxG47aktN4W1lfpsuQRt59w==
@@ -166,7 +166,7 @@
     prism-theme-vars "^0.2.2"
     theme-vitesse "^0.1.11"
 
-"@slidev/theme-seriph@^0.7.1":
+"@slidev/theme-seriph@*":
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/@slidev/theme-seriph/-/theme-seriph-0.7.1.tgz#b49b41b1801e01de1eccd9634b159d8c8ba31b51"
   integrity sha512-w3nCFsjxhZirRK4JBzDN8y1NAjwLniyThxC5G2S9fnQ3C6hQtHQD1ywDB7/GhkgIevT3W3RYwvuNYa8NBHDVaQ==
