@@ -54,7 +54,7 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 
 这样就可以在脚本中使用 `import` 、`export` 语句了
 
-![caniuse](images/caniuse.png)
+![caniuse](public/images/caniuse.png)
 
 ---
 layout: image-right
@@ -104,7 +104,7 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 
 ---
 layout: image-right
-image: images/sfc.png
+image: public/images/sfc.png
 ---
 # 什么是 Vue SFC?
 
@@ -132,7 +132,7 @@ h1 {
 
 ---
 
-# Vue SFC 的编译
+# 如何编译 Vue SFC?
 
 <br>
 
@@ -163,12 +163,18 @@ vue-loader@next 依赖的是：
 
 <div v-click>
 
-<h3>vite</h3>
+<h3>vite 2</h3>
 
 @vitejs/plugin-vue 依赖的是：
 
 * `@vue/compiler-sfc`
 
+</div>
+
+<div v-click>
+<arrow x1="450" y1="400" x2="450" y2="300" color="#4EC5D4" width="3" />
+
+<arrow x1="750" y1="400" x2="750" y2="300" color="#4EC5D4" width="3" />
 </div>
 
 </div>
@@ -265,29 +271,37 @@ export default script
 
 ---
 
-# Vite 是如何编译 Vue SFC 的？
+# Vite & Vue SFC Playground
 
 <br>
 
-`Vite` 项目初始化后，通过插件 `@vitejs/plugin-vue` 提供 Vue 3 单文件组件支持
+<div grid="~ cols-3 gap-x-4 gap-y-32">
 
-`@vitejs/plugin-vue` 项目依赖的是 `@vue/compiler-sfc`
+## Vite 2
 
----
 
-# Vue SFC Playground 是如何编译 Vue SFC 的？
+<img border="rounded" src="public/images/vite.svg">
 
-<br>
 
-`SFC Playgroud` 项目是基于 `vite` 搭建的工程， vite 默认依赖 `@vue/compiler-sfc`
+> * `@vitejs/plugin-vue`
+> * `@vue/compiler-sfc`
 
-<div v-click>
 
-实际上 `SFC Playground` 是基于 [@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js](https://github.com/vuejs/vue-next/blob/master/packages/sfc-playground/vite.config.ts#L16) 编译 ES Modules 的
+## Vue SFC Playground
+
+<img border="rounded" src="public/images/vue.svg">
+
+> * `@vue/compiler-sfc`
+> * 实际上 `SFC Playground` 是基于 [@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js](https://github.com/vuejs/vue-next/blob/master/packages/sfc-playground/vite.config.ts#L16) 编译 ES Modules 的
+
 
 </div>
 
-
+<style scoped>
+img {
+  height: 6rem;
+}
+</style>
 ---
 
 # 两者编译 SFC 的过程之间的区别？
@@ -332,7 +346,7 @@ export default script
 
 # Vite 与 SFC Playground 编译的区别？
 
-编译 HellWorld.vue
+编译 HelloWorld.vue
 
 <div grid="~ cols-2 gap-4" v-click>
 
@@ -349,38 +363,36 @@ const _sfc_main = defineComponent({
   }
 });
 
-import { toDisplayString as _toDisplayString, openBlock as _openBlock, createBlock as _createBlock, withScopeId as _withScopeId } from "/node_modules/.vite/vue.js?v=49d3ccd8"
-const _withId = /*#__PURE__*/_withScopeId("data-v-469af010")
+import { toDisplayString as _toDisplayString, openBlock as _openBlock, createBlock as _createBlock } from "/node_modules/.vite/vue.js?v=49d3ccd8"
 
-const _sfc_render = /*#__PURE__*/_withId((_ctx, _cache, $props, $setup, $data, $options) => {
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (_openBlock(), _createBlock("h1", null, _toDisplayString(_ctx.msg), 1 /* TEXT */))
-})
+}
 
-import "/src/components/HelloWorld.vue?vue&type=style&index=0&scoped=true&lang.css"
 
 _sfc_main.render = _sfc_render
-_sfc_main.__scopeId = "data-v-469af010"
 _sfc_main.__file = "/Users/xiaoyunwei/GitHub/private/slides-vite-demo/src/components/HelloWorld.vue"
 export default _sfc_main
 ```
 
 ```js
 // ./HelloWorld.vue
-/* Analyzed bindings: {
-  "msg": "setup-const"
-} */
-import { toDisplayString as _toDisplayString, openBlock as _openBlock, createBlock as _createBlock } from "vue"
-
 const __sfc__ = {
-  expose: [],
-  setup(__props) {
-    const msg = 'Hello World!'
-
-    return (_ctx, _cache) => {
-      return (_openBlock(), _createBlock("h1", null, _toDisplayString(msg)))
+  name: "HelloWorld",
+  props: {
+    msg: {
+      type: String,
+      required: true
     }
   }
 }
+
+import { toDisplayString as _toDisplayString, openBlock as _openBlock, createBlock as _createBlock } from "vue"
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (_openBlock(), _createBlock("h1", null, _toDisplayString($props.msg), 1 /* TEXT */))
+}
+__sfc__.render = render
 __sfc__.__file = "HelloWorld.vue"
 export default __sfc__
 ```
@@ -398,7 +410,7 @@ export default __sfc__
 ```js
 // ./App.vue
 import {defineComponent} from "/node_modules/.vite/vue.js?v=49d3ccd8";
-import HelloWorld from "/src/components/HelloWorld.vue?t=1621322440750";
+import HelloWorld from "/src/components/HelloWorld.vue";
 const _sfc_main = defineComponent({
   name: "App",
   components: {
@@ -414,7 +426,6 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return (_openBlock(), _createBlock(_component_HelloWorld, { msg: "Hello Vue 3 + TypeScript + Vite" }))
 }
 
-import "/src/App.vue?vue&type=style&index=0&lang.css"
 
 _sfc_main.render = _sfc_render
 _sfc_main.__file = "/Users/xiaoyunwei/GitHub/private/slides-vite-demo/src/App.vue"
@@ -423,29 +434,212 @@ export default _sfc_main
 
 ```js
 // ./App.vue
-/* Analyzed bindings: {
-  "HelloWorld": "setup-const"
-} */
-import { openBlock as _openBlock, createBlock as _createBlock } from "vue"
-
 import HelloWorld from './HelloWorld.vue'
 
 const __sfc__ = {
-  expose: [],
-  setup(__props) {
-    return (_ctx, _cache) => {
-      return (_openBlock(), _createBlock(HelloWorld))
-    }
+  name: 'App',
+  components: {
+    HelloWorld
   }
 }
+
+import { resolveComponent as _resolveComponent, openBlock as _openBlock, createBlock as _createBlock } from "vue"
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  const _component_HelloWorld = _resolveComponent("HelloWorld")
+
+  return (_openBlock(), _createBlock(_component_HelloWorld, { msg: "Hello Vue SFC Playground" }))
+}
+__sfc__.render = render
 __sfc__.__file = "App.vue"
 export default __sfc__
 ```
 
 </div>
+
+---
+layout: center
+class: text-center
+---
+
+# 抽象将 SFC 编译为 ES Modules 的能力
+
+<div grid="~ cols-2 gap-4" v-click>
+
+<div>
+
+### vue-sfc2esm
+
+<br>
+
+[![xiaoluoboding/vue-sfc2esm - GitHub](https://gh-card.dev/repos/xiaoluoboding/vue-sfc2esm.svg?fullname=)](https://github.com/xiaoluoboding/vue-sfc2esm)
+
+</div>
+
+<div>
+
+### vue-sfc-sandbox
+
+<br>
+
+[![xiaoluoboding/vue-sfc-sandbox - GitHub](https://gh-card.dev/repos/xiaoluoboding/vue-sfc-sandbox.svg?fullname=)](https://github.com/xiaoluoboding/vue-sfc-sandbox)
+
+</div>
+
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# vue-sfc2esm
+
+Transpiled Vue SFC File to ES modules.
+
+
+---
+
+# vue-sfc2esm <Marker><div class="text-green-500">✨ 功能</div></Marker>
+
+<br>
+
+将 Vue SFC 编译为 ES modules.
+
+<br>
+
+* 💪 基于 TypeScript 编写
+* 🌳 TreeShakable & SideEffects Free
+* 📁 虚拟文件系统 (支持编译 `.vue/.js` 文件).
+* 👬 友好的错误提示
+
+<br>
+
+💡 灵感来自 [Vue SFC Playground](https://github.com/vuejs/vue-next/tree/master/packages/sfc-playground). 
+
+---
+
+# vue-sfc2esm 是如何工作的?
+
+<div grid="~ cols-2 gap-2">
+
+<div>
+
+**核心逻辑**
+
+* `vue-sfc2esm` 内部实现了一个虚拟的 📁 文件系统，用来记录文件和代码的关系。
+
+* `vue-sfc2esm`  会基于 [@vue/compiler-sfc](https://www.npmjs.com/package/@vue/compiler-sfc) 将 SFC 代码编译成 `ES Modules`。
+
+* 编译好的 `ES Modules` 代码可以直接应用于现代浏览器中。
+
+</div>
+
+<div>
+
+**示例：编译 App.vue：**
+
+```html
+<script type="module">
+import { createApp as _createApp } from "vue"
+
+if (window.__app__) {
+  window.__app__.unmount()
+  document.getElementById('app').innerHTML = ''
+}
+
+document.getElementById('__sfc-styles').innerHTML = window.__css__
+const app = window.__app__ = _createApp(__modules__["DefaultDemo.vue"].default)
+app.config.errorHandler = e => console.error(e)
+app.mount('#app')
+</script>
 ```
 
 </div>
+
+</div>
+
+<div v-click>
+
+💡 使用 ES Modules 模块前，需要提前引入 Vue
+
+```html
+<script type="importmap">
+  { "imports": { "vue": "https://cdn.jsdelivr.net/npm/vue@next/dist/vue.esm-browser.js" } }
+</script>
+```
+
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# vue-sfc-sandbox
+
+Vue SFC Sandbox built on top of `@vue/compiler-sfc`, Sandbox as a Vue 3 component.
+
+<br>
+
+---
+
+# vue-sfc-sandbox <Marker><div class="text-green-500">✨ 功能</div></Marker>
+
+Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使用.
+
+<br>
+
+<div grid="~ cols-2 gap-2 mt-2">
+
+<div>
+
+### 🗳️ SFC 沙盒
+
+<br>
+
+* 💪 基于 TypeScript 编写
+* 🌳 TreeShakable & SideEffects Free
+* 📁 虚拟文件系统 (支持编译 `.vue/.js` 文件)
+* 👬 友好的错误提示，基于 [vue-sfc2esm](https://github.com/xiaoluoboding/vue-sfc2esm)
+* 🧪 将 Vue SFC 文件转换为 ES Modules
+* 🔌 支持外部 CDN, 比如 [unpkg](https://unpkg.com/)、[jsdelivr](https://www.jsdelivr.com/) 等.
+* 🧩 加载 [Import Maps](https://github.com/WICG/import-maps).
+
+
+</div>
+
+<div>
+
+### ✏️ 编辑器面板
+
+<br>
+
+* 🎨 基于 [codemirror 6](https://codemirror.net/6/) 的代码编辑器。
+* 🧑‍💻 对开发者友好, 内建高亮代码, 可交互的面板呈现 REPL 沙盒环境。
+
+### 👓 预览面板
+
+<br>
+
+* ⚡️ 实时编译 SFC 文件
+* 🔍 全屏查看
+
+</div>
+
+</div>
+
+---
+
+# vue-sfc-sandbox <Marker><div class="text-pink-500">🖼️ 预览</div></Marker>
+
+<br>
+
+<iframe src="https://codesandbox.io/embed/vue-sfc-sandbox-318nu?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+  style="width:100%; height:400px; border:0; border-radius: 4px; overflow:hidden;"
+  title="vue-sfc-sandbox"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
 
 ---
 
@@ -457,59 +651,6 @@ export default __sfc__
 * [demosify](https://github.com/demosify/demosify) - Create a playground to show the demos of your projects.
 * [codepan](https://github.com/egoist/codepan) - Like codepen and jsbin but works offline (*Archived*).
 
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly use. And add your custom components are also super easy.
-
-```md
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/custom/#components) for more.
-
-</div>
-</div>
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes are able to provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://sli.dev/themes/default.png">
-
-<img border="rounded" src="https://sli.dev/themes/seriph.png">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 
 ---
 layout: center

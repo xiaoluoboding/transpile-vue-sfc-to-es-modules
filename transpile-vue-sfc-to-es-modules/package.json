@@ -1,4 +1,5 @@
 {
+  "name": "slidev",
   "private": true,
   "scripts": {
     "dev": "slidev --open",
@@ -6,9 +7,8 @@
     "export": "slidev export"
   },
   "dependencies": {
-    "@slidev/cli": "^0.10.2",
+    "@slidev/cli": "^0.11.2",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*"
-  },
-  "name": "slidev"
+  }
 }
