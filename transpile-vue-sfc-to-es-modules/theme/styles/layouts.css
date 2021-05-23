@@ -1,0 +1,79 @@
+.slidev-layout {
+  h1 {
+    @apply text-primary;
+  }
+
+  p,
+  ul > li {
+    code {
+      color: #4EC5D4;
+      @apply py-1 px-2 rounded-sm;
+    }
+
+    code::before,
+    code::after {
+      content: "";
+    }
+  }
+
+  ul {
+    @apply my-4;
+  }
+}
+
+.slidev-layout.default {
+  h1 {
+    background-color: #2B90B6;
+    background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+  }
+}
+
+.slidev-layout.cover,
+.slidev-layout.intro {
+  @apply h-full grid;
+
+  h1 {
+    color: inherit;
+    @apply text-6xl leading-20;
+  }
+
+  h1 + p {
+    @apply opacity-40 -mt-4 text-2xl;
+  }
+}
+
+
+.slidev-layout.fact {
+  @apply text-center grid h-full;
+  h1 {
+    @apply text-8xl font-700;
+  }
+  h1 + p {
+    @apply font-700 text-2xl;
+  }
+}
+.slidev-layout.statement {
+  @apply text-center grid h-full;
+
+  h1 {
+    @apply text-6xl font-700;
+  }
+}
+.slidev-layout.quote {
+  @apply grid h-full;
+
+  h1 + p {
+    @apply mt-2;
+  }
+}
+.slidev-layout.section {
+  h1 {
+    @apply text-6xl font-500 leading-20;
+  }
+}
+

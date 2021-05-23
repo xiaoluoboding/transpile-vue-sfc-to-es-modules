@@ -1,5 +1,5 @@
 ---
-theme: seriph
+theme: ./theme
 background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
@@ -18,35 +18,102 @@ info: |
   </span>
 </div>
 
-<a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
+<a href="https://github.com/xiaoluoboding/slidev-slides/tree/main/transpile-vue-sfc-to-es-modules" target="_blank" alt="GitHub"
   class="abs-br m-6 text-xl icon-btn opacity-50 !border-none !hover:text-white">
   <carbon-logo-github />
 </a>
 
 ---
-layout: image-left
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
-# 未来前端工程构建
-
-### 下一代构建工具
-
-2021 年的今天，已经涌现出了一批新的，可以称之为下一代的前端构建工具，例如 `esbuild`、`snowpack`、`vite`、`wmr` 等等。
-
-可以看看这篇文章[《Comparing the New Generation of Build Tools》](https://css-tricks.com/comparing-the-new-generation-of-build-tools/)，从**工具配置**、**开发服务**、**生产构建**、**构建SSR**等方面分析比较了前端下一代的构建工具。
-
----
-layout: image-left
-image: https://source.unsplash.com/collection/94734566/1920x1080
+layout: intro
+title: 小蘿蔔丁
 ---
 
-# 浏览器原生构建
+<h1 class="px-32">小蘿蔔丁</h1>
 
-### 在浏览器中使用 JavaScript 模块
+<!-- <div class="leading-8 opacity-80">
+Vue core team member and Vite team member.<br>
+Creator of VueUse, i18n Ally and Type Challenges.<br>
+A fanatical full-time open sourceror.<br>
+</div> -->
+
+<div class="flex justify-between items-center px-32">
+
+<div class="my-10 grid grid-cols-[40px,1fr] w-min gap-y-4">
+  <ri-github-line class="opacity-50"/>
+  <div><a href="https://github.com/xiaoluoboding" target="_blank">xiaoluoboding</a></div>
+  <ri-twitter-line class="opacity-50"/>
+  <div><a href="https://twitter.com/xiaoluoboding" target="_blank">xiaoluoboding</a></div>
+  <ri-user-3-line class="opacity-50"/>
+  <div><a href="https://xlbd.me" target="_blank">xlbd.me</a></div>
+</div>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoluoboding/image-hub-old@latest/images/logo.jpg" class="rounded-full w-40 h-40 opacity-80"/>
+
+</div>
+
+---
+
+# ES Modules 规范
+
+ES modules（ESM） 是 JavaScript 官方的标准化模块系统
+
+### 演进
+
+在 ES6 之前，社区内已经有我们熟悉的模块加载方案 `CommonJS` 和 `AMD`，前者用于服务器 即 `Node.js`，而后者借助第三方库实现浏览器加载模块。
+
+在前端工程里，应用范围比较广的还是 `CommonJS`，从三个方面我们可以看出：
+
+* 我们依赖的发布在 `NPM` 上的第三方模块，大部分都打包默认支持 `CommonJS`
+* 通过 `Webpack` 构建的前端资源是兼容 Node.js 环境的 `CommonJS`
+* 我们编写的 ESM 代码 需要通过 `Babel` 转换为 `CommonJS`
+
+### 趋势
+
+好消息是，浏览器已经开始原生支持模块功能了，并且 `Node.js` 也在持续推进支持 ES Modules 模块功能
+
+ESM 标准化还在道路上
+
+---
+
+# 在 Node.js 中使用 ES Modules
+
+<div />
+
+自 `Node.js v13.2.0` 开始，有两种方式可以正确解析 ESM 标准的模块，在此之间还需要加上 `--experimental-modules` 才可以使用 ESM 模块。
+
+* 以后缀名为 `.mjs` 结尾的文件
+* 以后缀名为 `.js` 结尾的文件，且在 `package.json` 中声明字段 `type` 为 `module`
+
+```js {all|1-2|6-12}
+// esmA/index.mjs
+export default esmA
+
+// or
+
+// esmB/index.js
+export default esmB
+
+// esmB/package.json
+{
+  "type": "module"
+}
+```
+
+<div v-click>
+
+* 以后缀名为 `.cjs` 结尾的文件，将继续解析为 `CommonJS` 模块
+
+</div>
+
+---
+
+# 在浏览器中使用 ES Modules
+
+<div />
 
 现代浏览器已经原生支持加载 `ES Modules` ，需要将 `type="module"` 放到 `<script>` 标签中，来声明这个脚本是一个模块，例如：
 
-```html
+```html {all|1}
 <script type="module">
   // include script here
 </script>
@@ -57,17 +124,14 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 ![caniuse](public/images/caniuse.png)
 
 ---
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
 
-# 浏览器原生构建
+# 在 Node.js 中处理依赖关系
 
-### 在 Node.js 中处理依赖关系
+<br>
 
-现代前端工程开发环境中，会根据 `package.json` 来描述模块之间的依赖关系，安装模块后，所有模块会放在`node_modules` 文件夹下。例如 package.json 中描述依赖了lodash：
+现代前端工程开发环境中，会根据 `package.json` 来描述模块之间的依赖关系，安装模块后，所有模块会放在 `node_modules` 文件夹下。例如 package.json 中描述依赖了lodash：
 
-```json {5}
+```json {all|5}
 {
   "name": "test",
   "version": "0.0.1",
@@ -78,13 +142,10 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 ```
 
 ---
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
 
-# 浏览器原生构建
+# 在浏览器中处理依赖关系
 
-### 在浏览器中处理依赖关系
+<br>
 
 类似的，在浏览器中处理模块之间的依赖关系，目前有一个新的提案 `import-maps`
 
@@ -92,7 +153,7 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 
 例如：
 
-```json {4}
+```json {all|1|3-5}
 <script type="importmap">
 {
   "imports": {
@@ -117,18 +178,6 @@ image: public/images/sfc.png
 - 📝 [完整语法高亮](https://github.com/vuejs/awesome-vue#source-code-editing)
 - 📦 [CommonJS 模块](https://webpack.js.org/concepts/modules/#what-is-a-webpack-module)
 - 🎨 [组件作用域的 CSS](https://vue-loader.vuejs.org/en/features/scoped-css.html)
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
 
 ---
 
@@ -157,7 +206,7 @@ vue-loader 依赖的是：
 
 vue-loader@next 依赖的是：
 
-* `@vue/compiler-sfc`
+* `@vue/compiler-core`
 
 </div>
 
@@ -172,7 +221,7 @@ vue-loader@next 依赖的是：
 </div>
 
 <div v-click>
-<arrow x1="450" y1="400" x2="450" y2="300" color="#4EC5D4" width="3" />
+<!-- <arrow x1="450" y1="400" x2="450" y2="300" color="#4EC5D4" width="3" /> -->
 
 <arrow x1="750" y1="400" x2="750" y2="300" color="#4EC5D4" width="3" />
 </div>
@@ -180,16 +229,6 @@ vue-loader@next 依赖的是：
 </div>
 
 <style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-
 h3 {
   color: #4EC5D4;
   opacity: 1 !important;
@@ -275,31 +314,44 @@ export default script
 
 <br>
 
-<div grid="~ cols-3 gap-x-4 gap-y-32">
+<div grid="~ cols-3 gap-x-4 gap-y-8">
 
-## Vite 2
-
+<div class="flex justify-center flex-col items-center">
 
 <img border="rounded" src="public/images/vite.svg">
 
+### Vite 2
 
-> * `@vitejs/plugin-vue`
-> * `@vue/compiler-sfc`
+</div>
 
+<div class="col-span-2">
 
-## Vue SFC Playground
+> * vite 2 通过插件 `@vitejs/plugin-vue` 提供 Vue 3 单文件组件支持
+> * 底层依赖 `@vue/compiler-sfc`
+
+</div>
+
+<div class="flex justify-center flex-col items-center">
 
 <img border="rounded" src="public/images/vue.svg">
+
+### Vue SFC Playground
+
+</div>
+
+<div class="col-span-2">
 
 > * `@vue/compiler-sfc`
 > * 实际上 `SFC Playground` 是基于 [@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js](https://github.com/vuejs/vue-next/blob/master/packages/sfc-playground/vite.config.ts#L16) 编译 ES Modules 的
 
+</div>
 
 </div>
 
 <style scoped>
 img {
-  height: 6rem;
+  height: 128px;
+  width: 128px;
 }
 </style>
 ---
@@ -496,12 +548,15 @@ class: text-center
 
 Transpiled Vue SFC File to ES modules.
 
-
 ---
 
 # vue-sfc2esm <Marker><div class="text-green-500">✨ 功能</div></Marker>
 
-<br>
+<div />
+
+<div grid="~ cols-2 gap-8">
+
+<div>
 
 将 Vue SFC 编译为 ES modules.
 
@@ -514,7 +569,21 @@ Transpiled Vue SFC File to ES modules.
 
 <br>
 
-💡 灵感来自 [Vue SFC Playground](https://github.com/vuejs/vue-next/tree/master/packages/sfc-playground). 
+</div>
+
+<div class="flex items-center">
+
+![sfc2esm](public/images/sfc2esm.png)
+
+</div>
+
+</div>
+
+<div v-click>
+
+💡 灵感来自 [Vue SFC Playground](https://github.com/vuejs/vue-next/tree/master/packages/sfc-playground).
+
+</div>
 
 ---
 
@@ -536,7 +605,7 @@ Transpiled Vue SFC File to ES modules.
 
 <div>
 
-**示例：编译 App.vue：**
+**示例：编译 App.vue**
 
 ```html
 <script type="module">
@@ -643,7 +712,82 @@ Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使
 
 ---
 
+# vue-sfc-sandbox <Marker><div class="text-blue-500">🚥 状态</div></Marker>
+
+### 功能
+
+* 在线实时编译 SFC 并可预览
+* 支持传入 `CDN`
+* 支持传入 `Import Maps`，传入 URL 需要为 ESM
+
+### 缺憾
+
+* 无法直接使用 npm 库中打包成 `CommonJS` 的包
+* 第三方依赖请求过多，有明显的等待时长
+
+### 破局
+
+* `CommonJS` To `ES Modules` 方案
+* Vite 2 的[依赖预构建](https://cn.vitejs.dev/guide/dep-pre-bundling.html)
+
+---
+
+# 未来前端工程构建
+
+### 下一代前端开发与构建工具
+
+2021 年的今天，已经涌现出了一批新的，可以称之为下一代的前端构建工具，例如 `esbuild`、`snowpack`、`vite`、`wmr` 等等。
+
+可以看看这篇文章[《Comparing the New Generation of Build Tools》](https://css-tricks.com/comparing-the-new-generation-of-build-tools/)，从**工具配置**、**开发服务**、**生产构建**、**构建SSR**等方面分析比较了前端下一代的前端构建工具。
+
+<div grid="~ cols-4 gap-8" class="mt-8">
+
+<div class="flex justify-center items-center flex-col">
+
+### esbuild
+
+[![esbuid](public/images/esbuild.svg)](https://esbuild.github.io/)
+
+</div>
+
+<div class="flex justify-center items-center flex-col">
+
+### snowpack
+
+[![snowpack](public/images/snowpack.svg)](https://www.snowpack.dev/)
+
+</div>
+
+<div class="flex justify-center items-center flex-col">
+
+### vite
+
+[![vite](public/images/vite.svg)](https://vitejs.dev/)
+
+</div>
+
+<div class="flex justify-center items-center flex-col">
+
+### wmr
+
+[![wmr](public/images/wmr.svg)](https://github.com/preactjs/wmr)
+
+</div>
+
+</div>
+
+<style scoped>
+img {
+  height: 128px;
+  width: 128px;
+}
+</style>
+
+---
+
 # 相似工程
+
+<br />
 
 类似 `codepen`，基于 `Vue` 技术栈可以在线提供编辑器 + 演示的工具
 
@@ -651,27 +795,24 @@ Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使
 * [demosify](https://github.com/demosify/demosify) - Create a playground to show the demos of your projects.
 * [codepan](https://github.com/egoist/codepan) - Like codepen and jsbin but works offline (*Archived*).
 
-
 ---
 layout: center
-class: text-center
 ---
 
 # 工具
 
 * [Vue 3 Template Explorer](https://vue-next-template-explorer.netlify.app/)
+* [Vue SFC Playground](https://sfc.vuejs.org/)
 
 ---
 layout: center
-class: text-center
 ---
 
 # 参考资料
 
-* [ES modules: A cartoon deep-dive](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/)
 * [JavaScript modules 模块](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)
+* [ES modules: A cartoon deep-dive](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/)
 * [import-maps](https://github.com/WICG/import-maps)
-
 
 ---
 layout: center
