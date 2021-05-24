@@ -1,9 +1,9 @@
 ---
-theme: ./theme
+theme: seriph
 background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
-monaco: true
+canvasWidth: 1080
 info: |
   ## Transpile Vue SFC To ES Modules
 ---
@@ -28,13 +28,17 @@ layout: intro
 title: 小蘿蔔丁
 ---
 
-<h1 class="px-32">小蘿蔔丁</h1>
+<!-- <h1 class="px-32">小蘿蔔丁</h1> -->
+<div class="flex justify-between items-center mb-8 px-32">
 
-<!-- <div class="leading-8 opacity-80">
-Vue core team member and Vite team member.<br>
-Creator of VueUse, i18n Ally and Type Challenges.<br>
-A fanatical full-time open sourceror.<br>
-</div> -->
+  <h1 class="text-2xl dark:text-gray-300 font-semibold">
+    <span>小蘿蔔丁</span>
+  </h1>
+
+  <div>
+    <img src="https://cdn.jsdelivr.net/gh/xiaoluoboding/image-hub-old@latest/images/logo.jpg" class="rounded-full w-32 h-32 opacity-80"/>
+  </div>
+</div>
 
 <div class="flex justify-between items-center px-32">
 
@@ -46,8 +50,6 @@ A fanatical full-time open sourceror.<br>
   <ri-user-3-line class="opacity-50"/>
   <div><a href="https://xlbd.me" target="_blank">xlbd.me</a></div>
 </div>
-
-<img src="https://cdn.jsdelivr.net/gh/xiaoluoboding/image-hub-old@latest/images/logo.jpg" class="rounded-full w-40 h-40 opacity-80"/>
 
 </div>
 
@@ -131,8 +133,7 @@ export default esmB
 
 </div>
 
-<img src="public/images/caniuse.png" alt="caniuse">
-
+![caniuse](/images/caniuse.png)
 
 ---
 
@@ -158,7 +159,7 @@ export default esmB
 
 <br>
 
-类似的，在浏览器中处理模块之间的依赖关系，目前有一个新的提案 `import-maps`
+类似的，在浏览器中处理模块之间的依赖关系，目前有一个新的提案 [import-maps](https://github.com/WICG/import-maps)
 
 通过声明 `<script>` 标签的属性 `type` 为 `importmap`，来定义模块的名称和模块地址之间的映射关系
 
@@ -175,8 +176,35 @@ export default esmB
 ```
 
 ---
+
+# 在浏览器中处理依赖、使用模块
+
+<div />
+
+`importmap` 仍然处于提案阶段，目前浏览器兼容情况还很缓慢，但是未来会持续兼容。我们可以使用 [es-module-shims](https://github.com/guybedford/es-module-shims) 使浏览器兼容。
+
+```html
+<!-- UNPKG -->
+<script async src="https://unpkg.com/es-module-shims@0.10.1/dist/es-module-shims.js"></script>
+
+<!-- 声明依赖 -->
+<script type="importmap">
+{
+  "imports": {
+    "app": "./src/app.js"
+  }
+}
+</script>
+
+<!-- 使用模块 -->
+<script type="module">
+import 'app'
+</script>
+```
+
+---
 layout: image-right
-image: public/images/sfc.png
+image: /images/sfc.png
 ---
 # 什么是 Vue SFC?
 
@@ -323,13 +351,15 @@ export default script
 
 # Vite & Vue SFC Playground
 
-<br>
+<div />
+
+基于 `@vue/compiler-sfc` 构建的官方应用有 `Vite` 与 `Vue SFC Playground`，前者运行在服务端，后者运行在浏览器端。
 
 <div grid="~ cols-3 gap-x-4 gap-y-8">
 
 <div class="flex justify-center flex-col items-center">
 
-<img border="rounded" src="public/images/vite.svg">
+<img border="rounded" src="/images/vite.svg">
 
 ### Vite 2
 
@@ -344,7 +374,7 @@ export default script
 
 <div class="flex justify-center flex-col items-center">
 
-<img border="rounded" src="public/images/vue.svg">
+<img border="rounded" src="/images/vue.svg">
 
 ### Vue SFC Playground
 
@@ -584,7 +614,7 @@ Transpiled Vue SFC File to ES modules.
 
 <div class="flex items-center">
 
-![sfc2esm](public/images/sfc2esm.png)
+![sfc2esm](/images/sfc2esm.png)
 
 </div>
 
@@ -784,7 +814,7 @@ Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使
 
 ### esbuild
 
-[![esbuid](public/images/esbuild.svg)](https://esbuild.github.io/)
+[![esbuid](/images/esbuild.svg)](https://esbuild.github.io/)
 
 </div>
 
@@ -792,7 +822,7 @@ Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使
 
 ### snowpack
 
-[![snowpack](public/images/snowpack.svg)](https://www.snowpack.dev/)
+[![snowpack](/images/snowpack.svg)](https://www.snowpack.dev/)
 
 </div>
 
@@ -800,7 +830,7 @@ Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使
 
 ### vite
 
-[![vite](public/images/vite.svg)](https://vitejs.dev/)
+[![vite](/images/vite.svg)](https://vitejs.dev/)
 
 </div>
 
@@ -808,7 +838,7 @@ Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使
 
 ### wmr
 
-[![wmr](public/images/wmr.svg)](https://github.com/preactjs/wmr)
+[![wmr](/images/wmr.svg)](https://github.com/preactjs/wmr)
 
 </div>
 
