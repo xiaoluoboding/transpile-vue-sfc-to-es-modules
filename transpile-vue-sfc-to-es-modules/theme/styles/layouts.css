@@ -16,7 +16,8 @@
     }
   }
 
-  ul {
+  ul,
+  pre {
     @apply my-4;
   }
 }

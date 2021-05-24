@@ -109,9 +109,17 @@ export default esmB
 
 # 在浏览器中使用 ES Modules
 
-<div />
+<div grid="~ cols-2 gap-2" class="mt-2">
 
-现代浏览器已经原生支持加载 `ES Modules` ，需要将 `type="module"` 放到 `<script>` 标签中，来声明这个脚本是一个模块，例如：
+<div>
+
+现代浏览器已经原生支持加载 `ES Modules` 需要将 `type="module"` 放到 `<script>` 标签中，声明这个脚本是一个模块。
+
+这样就可以在脚本中使用 `import` 、`export` 语句了
+
+</div>
+
+<div>
 
 ```html {all|1}
 <script type="module">
@@ -119,9 +127,12 @@ export default esmB
 </script>
 ```
 
-这样就可以在脚本中使用 `import` 、`export` 语句了
+</div>
 
-![caniuse](public/images/caniuse.png)
+</div>
+
+<img src="public/images/caniuse.png" alt="caniuse">
+
 
 ---
 
@@ -712,23 +723,50 @@ Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使
 
 ---
 
-# vue-sfc-sandbox <Marker><div class="text-blue-500">🚥 状态</div></Marker>
+# vue-sfc-sandbox <Marker><div class="text-blue-500">🚦 现状与未来</div></Marker>
 
-### 功能
+<div grid="~ cols-2 gap-2 mt-2">
 
-* 在线实时编译 SFC 并可预览
-* 支持传入 `CDN`
+<div>
+
+### ✨ 功能
+
+* 在线实时编译 & 预览 `SFC` 文件 / `Vue 3` 组件
+* 支持传入外部 `CDN`
 * 支持传入 `Import Maps`，传入 URL 需要为 ESM
 
-### 缺憾
+### 💠 未来
+
+* 导出 SFC 组件
+* 支持实时编译 `React` 组件
+* 编辑器智能提示
+
+</div>
+
+<div>
+
+<v-clicks>
+
+### 💉 痛点
 
 * 无法直接使用 npm 库中打包成 `CommonJS` 的包
 * 第三方依赖请求过多，有明显的等待时长
 
-### 破局
+### 🖖 破局
 
 * `CommonJS` To `ES Modules` 方案
+  - [https://jspm.org/](https://jspm.org/)
+  - [http://esm.sh/](http://esm.sh/)
+  - [https://www.jsdelivr.com/esm](https://www.jsdelivr.com/esm)
+  - [https://www.skypack.dev/](https://www.skypack.dev/)
+
 * Vite 2 的[依赖预构建](https://cn.vitejs.dev/guide/dep-pre-bundling.html)
+
+</v-clicks>
+
+</div>
+
+</div>
 
 ---
 
