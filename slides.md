@@ -695,7 +695,7 @@ Vue SFC Sandbox built on top of `@vue/compiler-sfc`, Sandbox as a Vue 3 componen
 
 # vue-sfc-sandbox <Marker><div class="text-green-500">✨ 功能</div></Marker>
 
-Vue SFC Sandbox 基于 `@vue/compiler-sfc` 构建, Sandbox 作为一个组件使用.
+`vue-sfc-sandbox` 是 `vue-sfc2esm` 的上层应用，同时也基于 `@vue/compiler-sfc` 构建，提供实时编辑 & 预览 SFC 的沙盒组件。
 
 <br>
 
@@ -857,7 +857,7 @@ img {
 
 <br />
 
-类似 `codepen`，基于 `Vue` 技术栈可以在线提供编辑器 + 演示的工具
+类似 `sfc-sandbox`，基于 `Vue` 技术栈可以在线提供编辑器 + 演示的工具
 
 * [vuep](https://github.com/QingWei-Li/vuep) - 🎡 A component for rendering Vue components with live editor and preview.
 * [demosify](https://github.com/demosify/demosify) - Create a playground to show the demos of your projects.
