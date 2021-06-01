@@ -889,4 +889,18 @@ class: text-center
 
 # 感谢观看
 
-[vue-sfc2esm](https://github.com/xiaoluoboding/vue-sfc2esm) / [vue-sfc-sandbox](https://github.com/xiaoluoboding/vue-sfc-sandbox)
+<br>
+
+可以关注我的技术公号，不定期分享前端新知。
+
+<br>
+
+![qrcode-for-xlbd](/images/qrcode-for-xlbd.jpeg)
+
+<style scoped>
+img {
+  width: 256px;
+  height: 256px;
+  margin: 0 auto;
+}
+</style>
