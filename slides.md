@@ -18,7 +18,7 @@ info: |
   </span>
 </div>
 
-<a href="https://github.com/xiaoluoboding/slidev-slides/tree/main/transpile-vue-sfc-to-es-modules" target="_blank" alt="GitHub"
+<a href="https://github.com/xiaoluoboding/transpile-vue-sfc-to-es-modules" target="_blank" alt="GitHub"
   class="abs-br m-6 text-xl icon-btn opacity-50 !border-none !hover:text-white">
   <carbon-logo-github />
 </a>
@@ -714,7 +714,7 @@ Vue SFC Sandbox built on top of `@vue/compiler-sfc`, Sandbox as a Vue 3 componen
 * 🧪 将 Vue SFC 文件转换为 ES Modules
 * 🔌 支持外部 CDN, 比如 [unpkg](https://unpkg.com/)、[jsdelivr](https://www.jsdelivr.com/) 等.
 * 🧩 加载 [Import Maps](https://github.com/WICG/import-maps).
-
+* 💨 内置支持在模版上编写 `windicss`，同时支持 `attributify` 模式
 
 </div>
 
@@ -724,8 +724,9 @@ Vue SFC Sandbox built on top of `@vue/compiler-sfc`, Sandbox as a Vue 3 componen
 
 <br>
 
-* 🎨 基于 [codemirror 6](https://codemirror.net/6/) 的代码编辑器。
-* 🧑‍💻 对开发者友好, 内建高亮代码, 可交互的面板呈现 REPL 沙盒环境。
+* 🎨 基于 [Monaco Editor](https://github.com/microsoft/monaco-editor) 的代码编辑器。
+* 🧑‍💻 对开发者友好, 自带智能提示
+* ↕️ 自动拆分的 `<template>` 和 `<script>` 代码编辑器，分别编辑
 
 ### 👓 预览面板
 
@@ -733,6 +734,7 @@ Vue SFC Sandbox built on top of `@vue/compiler-sfc`, Sandbox as a Vue 3 componen
 
 * ⚡️ 实时编译 SFC 文件
 * 🔍 全屏查看
+* 🌛 暗色模式
 
 </div>
 
@@ -764,12 +766,14 @@ Vue SFC Sandbox built on top of `@vue/compiler-sfc`, Sandbox as a Vue 3 componen
 * 在线实时编译 & 预览 `SFC` 文件 / `Vue 3` 组件
 * 支持传入外部 `CDN`
 * 支持传入 `Import Maps`，传入 URL 需要为 ESM
+* 编辑器智能提示
+* 支持编译 `windicss`
 
 ### 💠 未来
 
+* `Import Maps` 包管理
 * 导出 SFC 组件
 * 支持实时编译 `React` 组件
-* 编辑器智能提示
 
 </div>
 
