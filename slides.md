@@ -746,7 +746,7 @@ Vue SFC Sandbox built on top of `@vue/compiler-sfc`, Sandbox as a Vue 3 componen
 
 <br>
 
-<iframe src="https://codesandbox.io/embed/vue-sfc-sandbox-318nu?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+<iframe src="https://vue-sfc-sandbox.vercel.app/"
   style="width:100%; height:400px; border:0; border-radius: 4px; overflow:hidden;"
   title="vue-sfc-sandbox"
   allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
