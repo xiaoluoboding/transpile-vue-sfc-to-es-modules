@@ -564,7 +564,7 @@ class: text-center
 
 <br>
 
-[![xiaoluoboding/vue-sfc2esm - GitHub](https://gh-card.dev/repos/xiaoluoboding/vue-sfc2esm.svg?fullname=)](https://github.com/xiaoluoboding/vue-sfc2esm)
+![vue-sfc2esm](https://socialify.git.ci/xiaoluoboding/vue-sfc2esm/image?description=1&font=Inter&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
 
 </div>
 
@@ -574,7 +574,7 @@ class: text-center
 
 <br>
 
-[![xiaoluoboding/vue-sfc-sandbox - GitHub](https://gh-card.dev/repos/xiaoluoboding/vue-sfc-sandbox.svg?fullname=)](https://github.com/xiaoluoboding/vue-sfc-sandbox)
+![vue-sfc-sandbox](https://socialify.git.ci/xiaoluoboding/vue-sfc-sandbox/image?description=1&font=Inter&pattern=Circuit%20Board&stargazers=1&theme=Dark)
 
 </div>
 
